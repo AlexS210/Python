@@ -1,0 +1,7 @@
+# This thing helps you to count symbol in your string/text
+
+def symb_counter():
+    string = input('Enter your text')
+    symbol = input('Enter symbol to count')
+    result = string.count(symbol)
+    print(f'Your string has {result} of \"{symbol}\"')
