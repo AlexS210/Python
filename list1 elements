@@ -1,0 +1,13 @@
+# Напишите программу, которая принимает два списка и выводит все элементы первого, которых нет во втором.
+# This func shows you elements from list1 that aren't in list2
+
+def func():
+    list1 = list(input('List #1:'))
+    list2 = list(input('List #2:'))
+    result = []
+    for item in list1:
+        if item not in list2 and item not in result:
+            result.append(item)
+    print(result)
+    
+func()
