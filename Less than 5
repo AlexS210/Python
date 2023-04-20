@@ -1,0 +1,9 @@
+# write a program that prints out all the elements of the list that are less than 5
+
+list1 = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+result = []
+
+for item in list1:
+    if item < 5:
+        result.append(item)
+print(result)
