@@ -16,3 +16,22 @@ for item in list1:
     if item < 5:
         result.append(item)
 print(result)
+
+# Extra 2
+# Write this in one line of Python
+
+list1 = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+
+result = filter(lambda x: x < 5, list1)
+print(list(result))
+
+
+# Extra 3
+# Ask the user for a number and return a list that contains only elements from the original list a that are smaller than that number given by the user
+
+a = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+
+while True:
+    user_number = int(input('Your number: '))
+    result = filter(lambda x: user_number > x, a)
+    print(list(result))
