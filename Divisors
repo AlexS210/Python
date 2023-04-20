@@ -1,0 +1,10 @@
+# Create a program that asks the user for a number and then prints out a list of all the divisors of that number
+
+while True:
+    user_number = int(input('Your number: '))
+    divisors = range(1, user_number)
+    result = []
+    for num in divisors:
+        if user_number % num == 0:
+            result.append(num)
+    print(f'The divisors of {user_number} is: {result}')
