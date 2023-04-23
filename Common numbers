@@ -37,3 +37,13 @@ for number1 in list1:
         if number1 == number2 and number1 not in result:
             result.append(number1)
 print(f'Common numbers: {sorted(result)}')
+
+# Extra 2
+# Write this in one line of Python
+
+a = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+
+result = set([x1 for x1 in a for x2 in b if x1 == x2])
+print(list(result))
+
