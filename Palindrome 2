@@ -1,0 +1,8 @@
+# Ask the user for a string and print out whether this string is a palindrome or not. (A palindrome is a string that reads the same forwards and backwards.)
+
+user_input = input('Your word: ')
+
+if user_input == user_input[::-1]:
+    print('Palindrome')
+else:
+    print('Not Palindrome or wrong input')
