@@ -11,3 +11,29 @@ for x1 in a:
         if x1 == x2 and x1 not in result:
             result.append((x1))
 print(result)
+
+# Extra 1
+# Randomly generate two lists to test this
+
+import random
+
+lists_range = int(input('Lists range: '))
+
+list1 = []
+list2 = []
+result = []
+
+for x in range(0, lists_range):
+    list1.append(random.randint(0, lists_range))
+
+for x in range(0, lists_range):
+    list2.append(random.randint(0, lists_range))
+
+print(f'List #1: {list1}')
+print(f'List #2: {list2}')
+
+for number1 in list1:
+    for number2 in list2:
+        if number1 == number2 and number1 not in result:
+            result.append(number1)
+print(f'Common numbers: {sorted(result)}')
