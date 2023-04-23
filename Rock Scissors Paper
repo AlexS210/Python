@@ -1,0 +1,25 @@
+# Make a two-player Rock-Paper-Scissors game
+
+while True:
+    winning_combos = ('r', 's'), ('s', 'p'), ('p', 'r')
+    player = 1  # Active player
+
+    def turn_switcher():
+        return 1 if player == 2 else 2
+
+    def turn():
+        player_choose = input(f'Player{player}, your choose: ').lower()
+        return player_choose
+
+    def player_won():
+        if (p1, p2) in winning_combos:
+            print('Player1 won')
+        elif p1 == p2:
+            print('Tie')
+        else:
+            print('Player2 won')
+
+    p1 = turn()
+    player = turn_switcher()
+    p2 = turn()
+    player_won()
