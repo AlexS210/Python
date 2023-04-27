@@ -1,0 +1,17 @@
+# Use the BeautifulSoup and requests Python packages to print out a list of all the article titles on the New York Times homepage
+
+from bs4 import BeautifulSoup
+import requests
+
+# Assign URL
+url = "http://www.nytimes.com/"
+
+# Fetch raw HTML content
+html_content = requests.get(url).text
+
+# Now that the content is ready, iterate
+# through the content using BeautifulSoup:
+soup = BeautifulSoup(html_content, "html.parser")
+
+# similarly to get all the occurrences of a given tag
+print(soup.find('title').text)
