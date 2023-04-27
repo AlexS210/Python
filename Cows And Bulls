@@ -1,0 +1,31 @@
+import random
+
+secret_number = str(random.randint(1000, 9999))
+
+user_won = False
+cows = 0
+bulls = 0
+number_of_tries = 0
+
+print('Guess the number between 1000 and 9999!')
+
+while not user_won:
+    user_guess = input('Guess: ')
+    cows = 0
+    bulls = 0
+
+    for index in range(0, 4):
+
+        if user_guess[index] == secret_number[index]:
+            cows += 1
+
+        if user_guess[index] != secret_number[index] and user_guess[index] in secret_number:
+            bulls += 1
+
+    number_of_tries += 1
+
+    print(f'Cows = {cows}, Bulls = {bulls}')
+
+    if user_guess == secret_number:
+        user_won = True
+        print(f'User won! Tries: {number_of_tries}')
