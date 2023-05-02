@@ -1,0 +1,26 @@
+# Given two .txt files that have lists of numbers in them, find the numbers that are overlapping.
+# One .txt file has a list of all prime numbers under 1000, and the other .txt file has a list of happy numbers up to 1000.
+
+overlapping = []
+happylist = []
+primelist = []
+
+with open('happynumbers.txt', 'r') as file:
+    line = file.readline()
+    while line:
+        line = line.strip()
+        happylist.append(int(line))
+        line = file.readline()
+
+with open('primenumbers.txt', 'r') as file:
+    line = file.readline()
+    while line:
+        line = line.strip()
+        primelist.append(int(line))
+        line = file.readline()
+
+for x in happylist:
+    if x in primelist:
+        overlapping.append(x)
+
+print(overlapping)
