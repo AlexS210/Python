@@ -1,3 +1,5 @@
+# Using list
+
 with open('namelist.txt', 'r') as open_file:
     all_text = open_file.read()
 
@@ -6,3 +8,19 @@ names_list = ['Luke', 'Lea', 'Darth']
 for name in names_list:
     counter = all_text.count(name)
     print(f'{name}: {counter}')
+
+
+# Using dict
+
+counter_dict = {}
+
+with open('namelist.txt', 'r') as file:
+    line = file.readline()
+    while line:
+        line = line.strip()
+        if line in counter_dict:
+            counter_dict[line] += 1
+        else:
+            counter_dict[line] = 1
+        line = file.readline()
+print(counter_dict)
