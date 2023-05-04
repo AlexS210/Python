@@ -1,0 +1,15 @@
+# Ask the user what size game board they want to draw, and draw it for them to the screen using Python’s print statement
+
+string1 = ' ---'
+string2 = '|   '
+
+
+def half_square(x):
+    print(x * string1 + ' ')
+    print(x * string2 + '|')
+
+
+def playground(x, y):
+    for i in range(1, y+1):
+        half_square(x)
+    print(x * string1 + ' ')
