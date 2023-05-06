@@ -2,22 +2,20 @@
 # The program will guess a number, and you, the user, will say whether it is too high, too low, or your number.
 # At the end of this exchange, your program should print out how many guesses it took to get your number.
 
-import random
+min_value = 0
+max_value = 100
+middle_value = 50
 
-guess = random.randint(0, 100)
-play = True
 counter = 0
+user_says = None
 
-while play:
-    print(f'Your number is {guess}?')
-    user_says = input('Higher or lower? ')
+while user_says != 'yes':
+    user_says = input(f'Your number is {middle_value}? ')
     if user_says == 'lower':
-        guess = int(guess / 2)
+        max_value = middle_value - 1
     elif user_says == 'higher':
-        guess = int((guess + 100) / 2) + 1
+        min_value = middle_value + 1
+    middle_value = int((min_value + max_value) / 2)
     counter += 1
 
-    if user_says == 'yes':
-        print(f'Your number is {guess}.')
-        print(f'Game over. Tries: {counter}.')
-        play = False
+print(f'Game over. Tries: {counter}.')
