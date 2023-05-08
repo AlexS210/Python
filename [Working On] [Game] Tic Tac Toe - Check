@@ -17,3 +17,15 @@ for row in game:
             if row == [item, item, item]:
                 print(f'Player {player_turn} won')
                 break
+
+# Checking vertical lines for winner
+for x in range(0, 3):
+    if game[0][x] == game[1][x] and game[0][x] == game[2][x] and game[0][x] != 0:
+        print(f'Player {player_turn} won')
+        break
+
+# Checking diagonals for winner
+if game[0][0] == game[1][1] and game[0][0] == game[2][2] and game[0][0] != 0:
+    print(f'Player {player_turn} won')
+elif game[0][2] == game[1][1] and game[0][2] == game[2][0] and game[0][2] != 0:
+    print(f'Player {player_turn} won')
