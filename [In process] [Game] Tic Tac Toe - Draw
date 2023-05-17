@@ -4,28 +4,36 @@
 
 
 game = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
-
 player = 1
+game_continue = True
 
-# Checking horizontal lines for winner
-for rows in game:
-    for item in rows:
-        if item != 0:
-            if rows == [item, item, item]:
-                print(f'Player {player} won.')
-                break
 
-# Checking vertical lines for winner
-for x in range(0, 3):
-    if game[0][x] == game[1][x] == game[2][x] and game[0][x] != 0:
+def whos_won():
+    win = False
+    # Checking horizontal lines for winner
+    for rows in game:
+        for item in rows:
+            if item != 0:
+                if rows == [item, item, item]:
+                    print(f'Player {player} won.')
+                    win = True
+                    break
+
+    # Checking vertical lines for winner
+    for x in range(0, 3):
+        if game[0][x] == game[1][x] == game[2][x] and game[0][x] != 0:
+            print(f'Player {player} won.')
+            win = True
+            break
+
+    # Checking diagonals for winner
+    if game[0][0] == game[1][1] == game[2][2] and game[0][0] != 0:
         print(f'Player {player} won.')
-        break
-
-# Checking diagonals for winner
-if game[0][0] == game[1][1] == game[2][2] and game[0][0] != 0:
-    print(f'Player {player} won.')
-elif game[0][2] == game[1][1] == game[2][0] and game[0][2] != 0:
-    print(f'Player {player} won.')
+        win = True
+    elif game[0][2] == game[1][1] == game[2][0] and game[0][2] != 0:
+        print(f'Player {player} won.')
+        win = True
+    return not win
 
 
 def draw(matrix):
@@ -38,12 +46,12 @@ def switch_players(arg):
     return 1 if arg == 2 else 2
 
 
-while True:
+while game_continue:
     player_turn = input('Row and Column (r,c): ')
     turn_row, turn_column = player_turn.split(',')
-    turn_row = int(turn_row) - 1
-    turn_column = int(turn_column) - 1
-    game[turn_row][turn_column] = 2
+    turn_row = int(turn_row)
+    turn_column = int(turn_column)
+    game[turn_row - 1][turn_column - 1] = player
+    game_continue = whos_won()
     player = switch_players(player)
-    print(player)
     draw(game)
