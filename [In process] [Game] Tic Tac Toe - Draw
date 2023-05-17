@@ -8,8 +8,9 @@ player = 1
 game_continue = True
 
 
-def whos_won():
+def who_won():
     win = False
+    
     # Checking horizontal lines for winner
     for rows in game:
         for item in rows:
@@ -47,11 +48,14 @@ def switch_players(arg):
 
 
 while game_continue:
+    # Take input coordinates
     player_turn = input('Row and Column (r,c): ')
     turn_row, turn_column = player_turn.split(',')
     turn_row = int(turn_row)
     turn_column = int(turn_column)
-    game[turn_row - 1][turn_column - 1] = player
-    game_continue = whos_won()
-    player = switch_players(player)
+    
+    game[turn_row - 1][turn_column - 1] = player  # Changing matrix
+    
+    game_continue = who_won()  # Check for winner
+    player = switch_players(player)  # Switching players
     draw(game)
