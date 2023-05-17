@@ -10,7 +10,7 @@ game_continue = True
 
 def who_won():
     win = False
-    
+
     # Checking horizontal lines for winner
     for rows in game:
         for item in rows:
@@ -37,7 +37,11 @@ def who_won():
     return not win
 
 
-def draw(matrix):
+def draw(matrix, r, c):
+    if player == 1:
+        matrix[r][c] = 'X'
+    elif player == 2:
+        matrix[r][c] = 'O'
     print(matrix[0])
     print(matrix[1])
     print(matrix[2])
@@ -51,11 +55,11 @@ while game_continue:
     # Take input coordinates
     player_turn = input('Row and Column (r,c): ')
     turn_row, turn_column = player_turn.split(',')
-    turn_row = int(turn_row)
-    turn_column = int(turn_column)
-    
-    game[turn_row - 1][turn_column - 1] = player  # Changing matrix
-    
+    turn_row = int(turn_row) - 1
+    turn_column = int(turn_column) - 1
+
+    game[turn_row][turn_column] = player  # Changing matrix
+
     game_continue = who_won()  # Check for winner
+    draw(game, turn_row, turn_column)
     player = switch_players(player)  # Switching players
-    draw(game)
