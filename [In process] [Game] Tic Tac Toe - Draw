@@ -60,6 +60,6 @@ while game_continue:
 
     game[turn_row][turn_column] = player  # Changing matrix
 
-    game_continue = who_won()  # Check for winner
     draw(game, turn_row, turn_column)
+    game_continue = who_won()  # Check for winner
     player = switch_players(player)  # Switching players
