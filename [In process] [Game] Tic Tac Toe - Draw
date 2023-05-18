@@ -47,19 +47,25 @@ def draw(matrix, r, c):
     print(matrix[2])
 
 
+def player_turn():
+    choice = input('Row and Column (r,c): ')
+    return choice
+
+
 def switch_players(arg):
     return 1 if arg == 2 else 2
 
 
 while game_continue:
-    # Take input coordinates
-    player_turn = input('Row and Column (r,c): ')
-    turn_row, turn_column = player_turn.split(',')
+    coordinates = player_turn()
+    turn_row, turn_column = coordinates.split(',')
     turn_row = int(turn_row) - 1
     turn_column = int(turn_column) - 1
 
-    game[turn_row][turn_column] = player  # Changing matrix
-
-    draw(game, turn_row, turn_column)
-    game_continue = who_won()  # Check for winner
-    player = switch_players(player)  # Switching players
+    if game[turn_row][turn_column] != 0:
+        print('This place already taken. Try again.')
+    else:
+        game[turn_row][turn_column] = player
+        draw(game, turn_row, turn_column)
+        game_continue = who_won()
+        player = switch_players(player)
