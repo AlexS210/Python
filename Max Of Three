@@ -1,0 +1,7 @@
+# Implement a function that takes as input three variables, and
+# returns the largest of the three. Do this without using the Python max() function!
+
+
+def max_func(x1, x2, x3):
+    lst = sorted([x1, x2, x3])
+    return lst[-1]
