@@ -1,0 +1,68 @@
+game = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+player = 1
+game_continue = True
+string1 = ' ---'
+string2 = '|   '
+
+
+def who_won():
+    win = False
+
+    # Checking horizontal lines for winner
+    for rows in game:
+        for item in rows:
+            if item != 0:
+                if rows == [item, item, item]:
+                    print(f'Player {player} won.')
+                    win = True
+                    break
+
+    # Checking vertical lines for winner
+    for x in range(0, 3):
+        if game[0][x] == game[1][x] == game[2][x] and game[0][x] != 0:
+            print(f'Player {player} won.')
+            win = True
+            break
+
+    # Checking diagonals for winner
+    if game[0][0] == game[1][1] == game[2][2] and game[0][0] != 0:
+        print(f'Player {player} won.')
+        win = True
+    elif game[0][2] == game[1][1] == game[2][0] and game[0][2] != 0:
+        print(f'Player {player} won.')
+        win = True
+    return not win
+
+
+def draw(matrix, r, c):
+    if player == 1:
+        matrix[r][c] = 'X'
+    elif player == 2:
+        matrix[r][c] = 'O'
+    print(matrix[0])
+    print(matrix[1])
+    print(matrix[2])
+
+
+def player_turn():
+    choice = input('Row and Column (r,c): ')
+    return choice
+
+
+def switch_players(arg):
+    return 1 if arg == 2 else 2
+
+
+while game_continue:
+    coordinates = player_turn()
+    turn_row, turn_column = coordinates.split(',')
+    turn_row = int(turn_row) - 1
+    turn_column = int(turn_column) - 1
+
+    if game[turn_row][turn_column] != 0:
+        print('This place already taken. Try again.')
+    else:
+        game[turn_row][turn_column] = player
+        draw(game, turn_row, turn_column)
+        game_continue = who_won()
+        player = switch_players(player)
