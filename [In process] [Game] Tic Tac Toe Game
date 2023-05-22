@@ -1,11 +1,9 @@
 game = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 player = 1
 game_continue = True
-string1 = ' ---'
-string2 = '|   '
 
 
-def who_won():
+def win_check():
     win = False
 
     # Checking horizontal lines for winner
@@ -34,35 +32,35 @@ def who_won():
     return not win
 
 
-def draw(matrix, r, c):
-    if player == 1:
-        matrix[r][c] = 'X'
-    elif player == 2:
-        matrix[r][c] = 'O'
-    print(matrix[0])
-    print(matrix[1])
-    print(matrix[2])
+def draw(matrix):
+    line = ' --- --- --- '
+    for i in range(0, 3):
+        print(line)
+        print(f'| {matrix[i][0]} | {matrix[i][1]} | {matrix[i][2]} |')
+    print(line)
 
 
 def player_turn():
     choice = input('Row and Column (r,c): ')
-    return choice
+    x, y = choice.split(',')
+    x = int(x) - 1
+    y = int(y) - 1
+    return x, y
 
 
 def switch_players(arg):
     return 1 if arg == 2 else 2
 
 
+draw(game)
+
 while game_continue:
-    coordinates = player_turn()
-    turn_row, turn_column = coordinates.split(',')
-    turn_row = int(turn_row) - 1
-    turn_column = int(turn_column) - 1
+    turn_row, turn_column = player_turn()
 
     if game[turn_row][turn_column] != 0:
-        print('This place already taken. Try again.')
+        print('This place is already taken. Try again.')
     else:
         game[turn_row][turn_column] = player
-        draw(game, turn_row, turn_column)
-        game_continue = who_won()
+        draw(game)
+        game_continue = win_check()
         player = switch_players(player)
