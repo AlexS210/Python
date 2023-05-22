@@ -63,7 +63,7 @@ while game_continue:
     turn_column = int(turn_column) - 1
 
     if game[turn_row][turn_column] != 0:
-        print('This place already taken. Try again.')
+        print('This place is already taken. Try again.')
     else:
         game[turn_row][turn_column] = player
         draw(game, turn_row, turn_column)
