@@ -1,0 +1,7 @@
+# The task is to write a function that picks a random word from a list of words from the SOWPODS dictionary
+
+import random
+
+with open('SOWPODS dictionary.txt', 'r') as file:
+    lines = file.readlines()
+    print(lines[random.randint(0, len(lines))])
