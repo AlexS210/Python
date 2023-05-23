@@ -1,0 +1,36 @@
+word = list('EVAPORATE')
+guessed = []
+game_continue = True
+
+for i in word:
+    guessed.append('_')
+
+
+def printer(list_to_print):
+    result = ''
+    for x in list_to_print:
+        result += x
+    print(result)
+
+
+def win_check(lst):
+    return '_' in lst
+
+
+printer(guessed)
+
+while game_continue:
+    user_guess = input('Guess your letter: ').upper()
+
+    if user_guess in word and user_guess not in guessed:
+        for i in range(0, len(word)):
+            if word[i] == user_guess:
+                guessed[i] = user_guess
+        printer(guessed)
+    else:
+        print('Try again!')
+
+    game_continue = win_check(guessed)
+
+    if not game_continue:
+        print(f'You won. Congratulations.')
