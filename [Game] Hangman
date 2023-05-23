@@ -1,0 +1,50 @@
+import random
+
+with open('SOWPODS dictionary.txt', 'r') as file:
+    lines = file.readlines()
+    word = list(random.choice(lines).strip())
+
+guessed = []
+tries = 6
+
+for i in word:
+    guessed.append('_')
+
+
+def list_printer(list_to_str):
+    result = ''
+    for x in list_to_str:
+        result += x
+    print(result)
+
+
+def win_check(lst):
+    return '_' in lst
+
+
+list_printer(guessed)
+
+while tries > 0:
+    user_guess = input('Guess your letter: ').upper()
+
+    if user_guess in word and user_guess not in guessed:
+        for i in range(0, len(word)):
+            if word[i] == user_guess:
+                guessed[i] = user_guess
+        list_printer(guessed)
+    elif user_guess not in word:
+        tries -= 1
+        print('Incorrect letter.')
+    else:
+        print('Try again!')
+
+    print(f'Tries: {tries}')
+    game_continue = win_check(guessed)
+
+    if not game_continue:
+        print(f'You won. Congratulations.')
+        break
+    elif tries == 0:
+        print('You lose. The word is:')
+        list_printer(word)
+        break
