@@ -1,0 +1,40 @@
+# In this exercise, load that JSON file from disk, extract the months of all the birthdays, and count how many scientists have a birthday in each month.
+
+import json
+from collections import Counter
+
+birthdays = {
+    'Albert Einstein': '1879.03.14',
+    'Benjamin Franklin': '1706.01.17',
+    'Ada Lovelace': '1815.12.10',
+}
+
+with open('info.json', 'w') as file:
+    json.dump(birthdays, file)
+
+months = {
+    '01': 'January',
+    '02': 'February',
+    '03': 'March',
+    '04': 'April',
+    '05': 'May',
+    '06': 'June',
+    '07': 'July',
+    '08': 'August',
+    '09': 'September',
+    '10': 'October',
+    '11': 'November',
+    '12': 'December'
+}
+
+with open("info.json", "r") as file:
+    info = json.load(file)
+
+data = []
+
+for k, v in info.items():
+    item = v.split('.')[1]
+    data.append(months[item])
+
+result = Counter(data)
+print(result)
